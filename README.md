@@ -97,6 +97,7 @@ Esse comando irá construir os contêineres definidos no arquivo `docker-compose
     DB_PASSWORD=root
     ```
 PS: Se o laravel relatar o erro "Connection refused:" altere a porta para '3307'
+
 5. Agora
             ```bash
     php artisan migrate
