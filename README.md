@@ -1,8 +1,19 @@
 # Configurando um Ambiente de Desenvolvimento Laravel com DOCKER
 
 ## Índice
+- [Pré-requisitos](#pré-requisitos)
+- [Docker Desktop](#docker-desktop)
 - [Windows](#windows)
 - [Linux](#linux)
+
+## Pré-requisitos
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- WSL (Windows Subsystem for Linux)
+
+## Docker Desktop
+Antes de qualquer coisa, certifique-se de ter o Docker Desktop instalado em seu sistema. Se você ainda não possui ou não configurou corretamente, siga o guia oficial de instalação do Docker Desktop.
+- [Windows](https://www.docker.com/products/docker-desktop/)
+- [Linux](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Windows
 
@@ -12,16 +23,14 @@ Primeiro, certifique-se de ter o WSL (Windows Subsystem for Linux) configurado n
 Depois que o WSL estiver configurado, abra um terminal WSL e navegue até o diretório onde deseja clonar o repositório do seu projeto Laravel. Execute o comando abaixo para clonar o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
+git clone https://github.com/IgorOliverx/docker-laravel.git
 ```
-
-Substitua `https://github.com/seu-usuario/seu-repositorio.git` pela URL do repositório que deseja clonar.
 
 ### 2. Rodando o Docker Compose
 Após clonar o repositório, navegue até o diretório do projeto:
 
 ```bash
-cd seu-repositorio
+cd docker-laravel
 ```
 
 Agora, execute o seguinte comando para construir e iniciar os contêineres Docker:
@@ -63,3 +72,39 @@ Esse comando irá construir os contêineres definidos no arquivo `docker-compose
 ---
 
 Com esses passos, você terá um ambiente de desenvolvimento Laravel configurado usando Docker tanto no Windows quanto no Linux. Se precisar de mais ajuda, consulte a documentação oficial do Docker e Laravel.
+
+
+
+
+## Rodando comandos
+1. Após executar o comando de build, execute o comando
+      docker exec -it setup-php bash
+   depois
+   composer install
+   php artisan key generate
+   cp .env.example .env
+2. abra a IDE de sua escolha (recomendo o php storm)
+3. edite o arquivo .env, as credenciais do banco de dados e do redis devem ser alteradas
+4. algo como
+DB_CONNECTION=mysql
+DB_HOST=setup-mysql
+DB_PORT=3307
+DB_DATABASE=laravel
+DB_USERNAME=user
+DB_PASSWORD=root
+ps: afim de elevar o nivel de segurança, consegues alterar as credenciais no arquivo 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
