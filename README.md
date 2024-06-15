@@ -5,6 +5,7 @@
 - [Docker Desktop](#docker-desktop)
 - [Windows](#windows)
 - [Linux](#linux)
+- [Rodando Comandos](#rodando-comandos)
 
 ## Pré-requisitos
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
@@ -71,40 +72,36 @@ Esse comando irá construir os contêineres definidos no arquivo `docker-compose
 
 ---
 
+## Rodando Comandos
+
+1. Após executar o comando de build, execute o comando:
+    ```bash
+    docker exec -it setup-php bash
+    ```
+   depois:
+    ```bash
+    composer install
+    php artisan key:generate
+    cp .env.example .env
+    ```
+
+2. Abra a IDE de sua escolha (recomendo o PHPStorm).
+3. Edite o arquivo `.env`, as credenciais do banco de dados e do Redis devem ser alteradas.
+4. Algo como:
+    ```
+    DB_CONNECTION=mysql
+    DB_HOST=setup-mysql
+    DB_PORT=3306
+    DB_DATABASE=laravel
+    DB_USERNAME=user
+    DB_PASSWORD=root
+    ```
+5. Agora
+            ```bash
+    php artisan migrate
+          ```
+PS: A fim de elevar o nível de segurança, você pode alterar as credenciais no arquivo `docker-compose.yml`.
+
+---
+
 Com esses passos, você terá um ambiente de desenvolvimento Laravel configurado usando Docker tanto no Windows quanto no Linux. Se precisar de mais ajuda, consulte a documentação oficial do Docker e Laravel.
-
-
-
-
-## Rodando comandos
-1. Após executar o comando de build, execute o comando
-      docker exec -it setup-php bash
-   depois
-   composer install
-   php artisan key generate
-   cp .env.example .env
-2. abra a IDE de sua escolha (recomendo o php storm)
-3. edite o arquivo .env, as credenciais do banco de dados e do redis devem ser alteradas
-4. algo como
-DB_CONNECTION=mysql
-DB_HOST=setup-mysql
-DB_PORT=3307
-DB_DATABASE=laravel
-DB_USERNAME=user
-DB_PASSWORD=root
-ps: afim de elevar o nivel de segurança, consegues alterar as credenciais no arquivo 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
